@@ -1,0 +1,16 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: fury-kapp-app
+  namespace: default
+spec:
+  serviceAccountName: default-ns-sa
+  fetch:
+  - git:
+      url: https://github.com/cghsystems/kapp-fury-hack.git
+      ref: origin/master
+      subPath: fury
+  template:
+  - ytt: {}
+  deploy:
+  - kapp: {}
